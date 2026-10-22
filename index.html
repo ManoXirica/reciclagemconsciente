@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>♻️ EcoCycle | Reciclagem e Sustentabilidade</title>
+<meta name="description" content="Aprenda a separar, descartar e reaproveitar resíduos corretamente. Guia interativo de reciclagem: cores da coleta seletiva, onde descartar, quiz e compromisso pessoal.">
+<style>
+:root{--bg:#f6faf5;--card:#fff;--tx:#17301f;--mut:#4d6556;--pri:#1f8a4c;--pri2:#14633a;--bd:#dbe8de;--sh:0 6px 20px rgba(20,60,35,.08)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1b14;--card:#172a1f;--tx:#e6f2e9;--mut:#a3bdaa;--pri:#4cc482;--pri2:#7be0a5;--bd:#27412f;--sh:none}}
+:root[data-theme=dark]{--bg:#0f1b14;--card:#172a1f;--tx:#e6f2e9;--mut:#a3bdaa;--pri:#4cc482;--pri2:#7be0a5;--bd:#27412f;--sh:none}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.65}
+.skip{position:absolute;left:-999px;top:0;background:var(--pri);color:#fff;padding:8px 14px;z-index:99}.skip:focus{left:8px}
+:focus-visible{outline:3px solid #f5b301;outline-offset:2px}
+header{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:10px 5%;gap:12px}
+.logo{font-weight:800;color:var(--pri2);text-decoration:none;font-size:1.2rem}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:var(--tx);text-decoration:none;padding:6px 10px;border-radius:8px;font-size:.92rem}nav a:hover{background:var(--bd)}
+.tools{display:flex;gap:8px}
+.ib{background:none;border:1px solid var(--bd);color:var(--tx);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:1rem}
+#menuBtn{display:none}
+@media(max-width:860px){#menuBtn{display:block}nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-bottom:1px solid var(--bd);padding:8px 5%}nav.open{display:block}nav ul{flex-direction:column}}
+.hero{text-align:center;padding:90px 6% 70px;background:linear-gradient(160deg,#0f5132,#1f8a4c 60%,#7bc96f);color:#fff}
+.hero h1{font-size:clamp(2.4rem,8vw,4.6rem);margin:.2em 0;letter-spacing:.04em}
+.hero p{max-width:620px;margin:0 auto 1.2em;font-size:1.1rem}
+.btn{display:inline-block;background:#fff;color:#0f5132;padding:12px 24px;border-radius:30px;font-weight:700;text-decoration:none;margin:6px;border:0;cursor:pointer;font-size:1rem}
+.btn.o{background:transparent;color:#fff;border:2px solid #fff}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:900px;margin:-40px auto 0;padding:0 5%;position:relative}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px;text-align:center;box-shadow:var(--sh)}
+.stat b{display:block;font-size:2.2rem;color:var(--pri)}.stat span{color:var(--mut);font-size:.9rem}
+section{max-width:1050px;margin:0 auto;padding:64px 5% 8px}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);color:var(--pri2);margin:0 0 .4em}
+.lead{color:var(--mut);max-width:700px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px;box-shadow:var(--sh)}
+.card h3{margin:.1em 0 .4em}.card ul{margin:.3em 0;padding-left:1.1em}.card li{margin:.2em 0}
+.bin{border-top:8px solid var(--c)}.bin small{display:block;color:var(--mut);margin-top:6px}
+.tag{display:inline-block;background:var(--c);color:#fff;border-radius:20px;padding:2px 10px;font-size:.78rem;font-weight:700}
+.ok{color:var(--pri)}.no{color:#c0392b}
+.note{font-size:.85rem;color:var(--mut);margin-top:12px}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px;margin-top:18px;box-shadow:var(--sh)}
+input[type=text]{width:100%;padding:12px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.chip{background:var(--bg);border:1px solid var(--bd);color:var(--tx);border-radius:20px;padding:5px 12px;cursor:pointer}
+.res{min-height:3em;padding:12px;border-left:5px solid var(--pri);background:var(--bg);border-radius:8px;margin-top:8px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 14px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);cursor:pointer;font-size:1rem}
+.opt.right{background:#d4f3df;border-color:#1f8a4c;color:#0b3a1f}.opt.wrong{background:#fadbd8;border-color:#c0392b;color:#5a120b}
+.cb{position:relative}#sug{position:absolute;left:0;right:0;top:100%;z-index:20;margin:4px 0 0;padding:4px;list-style:none;background:var(--card);border:1px solid var(--bd);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.18);max-height:260px;overflow:auto}
+#sug li{padding:9px 12px;border-radius:8px;cursor:pointer}#sug li:hover,#sug li.on{background:var(--pri);color:#fff}
+.all{margin-top:14px;border-top:1px solid var(--bd);padding-top:12px}.all summary{cursor:pointer;font-weight:700;color:var(--pri2)}.all h4{margin:16px 0 0;color:var(--mut)}
+.bar{height:10px;background:var(--bd);border-radius:8px;overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;width:0;background:var(--pri);transition:width .4s}
+.pl label{display:flex;gap:10px;align-items:center;padding:6px 0;cursor:pointer}.pl input{width:20px;height:20px;accent-color:var(--pri)}
+footer{margin-top:70px;background:#0f3d26;color:#d7efe0;text-align:center;padding:36px 5%}
+footer a{color:#9be3b8}
+#top{position:fixed;right:18px;bottom:18px;display:none;border-radius:50%;width:46px;height:46px;background:var(--pri);color:#fff;border:0;cursor:pointer;font-size:1.2rem}
+.rv{opacity:0;transform:translateY(18px);transition:.6s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+<header>
+<a class="logo" href="#inicio">♻️ EcoCycle</a>
+<nav id="nav" aria-label="Principal"><ul>
+<li><a href="#sobre">Sobre</a></li><li><a href="#coleta">Coleta</a></li><li><a href="#onde">Onde descartar</a></li><li><a href="#reuso">Reutilização</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#acoes">Compromisso</a></li><li><a href="#impacto">Impacto</a></li>
+</ul></nav>
+<div class="tools"><button class="ib" id="theme" aria-label="Alternar tema claro/escuro">🌓</button><button class="ib" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button></div>
+</header>
+
+<main id="main">
+<div class="hero" id="inicio">
+<p>🌱 Sustentabilidade • Futuro • Natureza</p>
+<h1>RECICLAGEM</h1>
+<p>Pequenas atitudes geram grandes transformações. Aprenda a separar, descartar e reaproveitar do jeito certo.</p>
+<a class="btn" href="#coleta">Aprender a separar</a><a class="btn o" href="#acoes">Fazer meu compromisso</a>
+</div>
+<div class="stats">
+<div class="stat rv"><b>~95%</b><span>menos energia ao reciclar alumínio</span></div>
+<div class="stat rv"><b>400+</b><span>anos (estimativa) para o plástico se decompor</span></div>
+<div class="stat rv"><b>~20</b><span>árvores poupadas por tonelada de papel reciclado (estimativa)</span></div>
+</div>
+
+<section id="sobre">
+<h2>Sobre a reciclagem</h2>
+<p class="lead">A reciclagem transforma resíduos descartados em novos materiais e produtos. Isso reduz a extração de recursos naturais, economiza energia e diminui a poluição. Reciclar não é apenas cuidar do meio ambiente: é investir no futuro.</p>
+<div class="grid">
+<div class="card rv"><h3>1. Reduzir</h3>Consumir menos é a forma mais eficiente de gerar menos lixo.</div>
+<div class="card rv"><h3>2. Reutilizar</h3>Dar nova função a um objeto antes de descartá-lo.</div>
+<div class="card rv"><h3>3. Reciclar</h3>Separar corretamente para que o material volte à indústria.</div>
+</div>
+</section>
+
+<section id="coleta">
+<h2>Coleta seletiva: cores e materiais</h2>
+<p class="lead">As cores seguem o padrão nacional da Resolução CONAMA nº 275/2001. Veja o que vai (e o que não vai) em cada uma.</p>
+<div class="grid">
+<div class="card bin rv" style="--c:#1c64d6"><span class="tag">Azul</span><h3>📄 Papel e papelão</h3><ul class="ok"><li>Jornais, revistas, caixas, cadernos</li></ul><ul class="no"><li>Papel higiênico, guardanapo usado, papel engordurado</li></ul></div>
+<div class="card bin rv" style="--c:#d62828"><span class="tag">Vermelho</span><h3>🥤 Plástico</h3><ul class="ok"><li>Garrafas PET, embalagens, tampas, sacolas</li></ul><ul class="no"><li>Plástico com restos de comida</li></ul></div>
+<div class="card bin rv" style="--c:#2e9e4f"><span class="tag">Verde</span><h3>🍾 Vidro</h3><ul class="ok"><li>Garrafas, potes, frascos</li></ul><ul class="no"><li>Espelho, cerâmica, lâmpadas, vidro de janela</li></ul></div>
+<div class="card bin rv" style="--c:#e0a800"><span class="tag" style="color:#222">Amarelo</span><h3>🥫 Metal</h3><ul class="ok"><li>Latas de alumínio e aço, tampas</li></ul><ul class="no"><li>Esponja de aço, latas de tinta ou aerossol com resíduo</li></ul></div>
+<div class="card bin rv" style="--c:#7b4a2a"><span class="tag">Marrom</span><h3>🍂 Orgânico</h3><ul class="ok"><li>Cascas, restos de alimentos, borra de café</li></ul><ul class="no"><li>Plásticos, vidros, metais</li></ul></div>
+<div class="card bin rv" style="--c:#f07f13"><span class="tag">Laranja</span><h3>⚠️ Perigosos</h3><ul class="ok"><li>Pilhas, baterias, lâmpadas fluorescentes</li></ul><ul class="no"><li>Nunca misturar ao lixo comum</li></ul></div>
+</div>
+<p class="note">As regras de coleta variam por município. Confirme as orientações da prefeitura da sua cidade.</p>
+</section>
+
+<section id="onde">
+<h2>Onde descartar?</h2>
+<p class="lead">Comece a digitar um item (ex.: pilha, pneu, colchão) e escolha na lista, ou abra a lista completa para explorar.</p>
+<div class="box">
+<label for="q" class="lead">Item</label>
+<div class="cb"><input type="text" id="q" role="combobox" aria-expanded="false" aria-controls="sug" aria-autocomplete="list" placeholder="Buscar item…" autocomplete="off"><ul id="sug" role="listbox" hidden></ul></div>
+<div class="res" id="res" role="status" aria-live="polite">Selecione ou digite um item.</div>
+<details class="all"><summary>📋 Ver lista completa de itens (<span id="cnt"></span>)</summary><div id="cats"></div></details>
+</div>
+</section>
+
+<section id="reuso">
+<h2>Reutilização criativa</h2>
+<p class="lead">Antes de jogar algo fora, pense: isso pode ganhar uma nova utilidade?</p>
+<div class="grid">
+<div class="card rv"><h3>Garrafas PET</h3><ul><li>🌱 Vasos para plantas</li><li>💡 Luminárias artesanais</li><li>🧸 Brinquedos</li><li>🌧️ Irrigação simples</li></ul></div>
+<div class="card rv"><h3>Papelão e caixas</h3><ul><li>📚 Organizadores</li><li>🎨 Decoração</li><li>🐱 Casinhas para pets</li><li>🧩 Projetos escolares</li></ul></div>
+<div class="card rv"><h3>Vidros e potes</h3><ul><li>🕯️ Porta-velas</li><li>🌿 Terrários</li><li>🍬 Potes organizadores</li><li>🎁 Embalagens reutilizáveis</li></ul></div>
+<div class="card rv"><h3>Roupas antigas</h3><ul><li>👜 Bolsas</li><li>🧽 Panos de limpeza</li><li>🛏️ Almofadas</li><li>♻️ Doações</li></ul></div>
+</div>
+</section>
+
+<section id="quiz">
+<h2>Teste seus conhecimentos</h2>
+<div class="box" id="quizBox"></div>
+</section>
+
+<section id="acoes">
+<h2>Meu compromisso sustentável</h2>
+<p class="lead">Marque o que você já faz ou vai passar a fazer. Seu progresso fica salvo neste navegador.</p>
+<div class="box pl">
+<div class="bar" aria-hidden="true"><i id="pbar"></i></div>
+<p id="ptxt" role="status" aria-live="polite"></p>
+<label><input type="checkbox"> Separar o lixo corretamente</label>
+<label><input type="checkbox"> Evitar plástico descartável</label>
+<label><input type="checkbox"> Reutilizar potes, caixas e garrafas</label>
+<label><input type="checkbox"> Levar pilhas e eletrônicos a pontos de coleta</label>
+<label><input type="checkbox"> Apoiar cooperativas de catadores</label>
+<label><input type="checkbox"> Compartilhar o que aprendi com alguém</label>
+</div>
+</section>
+
+<section id="impacto">
+<h2>O impacto da reciclagem</h2>
+<div class="grid">
+<div class="card rv">♻️ Reduz a quantidade de resíduos enviados a aterros.</div>
+<div class="card rv">🌳 Ajuda a preservar florestas, rios e oceanos.</div>
+<div class="card rv">⚡ Costuma consumir menos energia que a produção a partir de matéria-prima nova.</div>
+<div class="card rv">👷 Gera trabalho e renda para milhares de famílias, em especial nas cooperativas.</div>
+<div class="card rv">🌎 Diminui emissões ligadas ao aquecimento global.</div>
+<div class="card rv"><h3>Reciclagem no Brasil</h3>O país ainda enfrenta desafios na coleta e na triagem. Cooperativas e projetos ambientais têm papel central nesse sistema.</div>
+</div>
+</section>
+</main>
+
+<footer>
+<p><b>EcoCycle © 2026</b> • Projeto acadêmico — Análise e Desenvolvimento de Sistemas</p>
+<p>Grupo: <b>Recicla Ai</b> • Fontes: <a href="https://conama.mma.gov.br/" target="_blank" rel="noopener">CONAMA</a>, <a href="https://www.gov.br/mma" target="_blank" rel="noopener">MMA</a></p>
+<p>🌎 O futuro do planeta depende das escolhas que fazemos hoje.</p>
+</footer>
+<button id="top" aria-label="Voltar ao topo">↑</button>
+
+<script>
+const $=s=>document.querySelector(s);
+// tema + menu
+const root=document.documentElement;
+try{const t=localStorage.getItem('theme');if(t)root.dataset.theme=t}catch(e){}
+$('#theme').onclick=()=>{const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;root.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',root.dataset.theme)}catch(e){}};
+$('#menuBtn').onclick=e=>{const o=$('#nav').classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',o)};
+document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>$('#nav').classList.remove('open'));
+// voltar ao topo
+addEventListener('scroll',()=>{$('#top').style.display=scrollY>500?'block':'none'});
+$('#top').onclick=()=>scrollTo({top:0});
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// onde descartar
+const C={e:'🔌 Eletrônicos e pilhas',c:'🍳 Cozinha e alimentos',p:'📄 Papel',pl:'🥤 Plástico',v:'🍾 Vidro',m:'🥫 Metal',h:'🏠 Casa e móveis',s:'💊 Saúde e higiene',o:'🚗 Outros'};
+const D=[
+['e','Pilha','Perigosa (laranja). Leve a supermercados, lojas de eletrônicos ou ecopontos com coleta. Nunca no lixo comum.','pilhas alcalina'],
+['e','Bateria de celular ou notebook','Devolva em lojas, assistências técnicas ou pontos de coleta. Não desmonte nem perfure: risco de incêndio.'],
+['e','Bateria de carro','Devolva à loja ou autopeças. Quem vende é obrigado a receber a usada (logística reversa).'],
+['e','Lâmpada fluorescente','Perigosa (contém mercúrio). Leve a pontos de coleta de lâmpadas ou ecopontos; não quebre.','economica'],
+['e','Lâmpada LED','Contém componentes eletrônicos: leve a pontos de coleta de lâmpadas ou ecopontos, quando houver.'],
+['e','Celular','Eletrônico: lojas, operadoras ou ecopontos com logística reversa. Apague seus dados antes.','smartphone telefone'],
+['e','Computador ou notebook','Ecoponto, lojas com logística reversa ou programas de lixo eletrônico. Apague os dados; se funcionar, doe.','pc'],
+['e','Televisão','Lixo eletrônico: ecoponto, lojas com logística reversa ou coleta de volumosos. Não quebre a tela.','tv monitor'],
+['e','Carregador e cabos','Lixo eletrônico: ecoponto ou lojas com coleta. Têm cobre e outros metais reaproveitáveis.','fio fone mouse teclado'],
+['e','Eletrodoméstico','Ecoponto ou coleta de volumosos. Geladeira e ar-condicionado têm gases: não desmonte. Se funcionar, doe.','geladeira microondas fogao'],
+['e','Cartucho de impressora','Muitos fabricantes e lojas de informática recebem cartuchos usados. Consulte o fabricante.','toner tinta'],
+['c','Óleo de cozinha','Nunca na pia. Guarde em garrafa PET fechada e entregue em ponto de coleta, cooperativa ou ecoponto.','oleo fritura'],
+['c','Casca de fruta','Orgânico (marrom). Ideal para compostagem.','legume verdura vegetal'],
+['c','Borra de café','Orgânico (marrom). Pode ir para compostagem.','cafe'],
+['c','Casca de ovo','Orgânico (marrom). Pode ir para compostagem.'],
+['c','Carne ou osso','Orgânico/lixo comum conforme a coleta local. Evite composteira caseira: atrai pragas e cheiro.','resto comida'],
+['c','Caixa de pizza','A parte limpa vai para o papel (azul); a engordurada vai para o lixo comum ou orgânico.'],
+['c','Caixa de leite ou suco','Reciclável (longa vida): enxágue, achate e coloque na coleta seletiva.','tetra pak'],
+['c','Papel-alumínio','Limpo: amasse em bola e destine ao metal (amarelo). Com gordura ou comida: lixo comum.','aluminio'],
+['c','Embalagem de salgadinho','Metalizada e multicamada: em geral não é reciclável. Lixo comum.','biscoito'],
+['c','Copo descartável','Plástico limpo pode ir na coleta seletiva, conforme a triagem local. Prefira copo reutilizável.'],
+['c','Canudo','Pequeno e leve, costuma não ser triado: lixo comum. Prefira não usar.'],
+['c','Esponja de cozinha','Lixo comum (não é reciclável).'],
+['c','Panela velha','Metal: ecoponto ou sucateiro. Se estiver boa, doe.'],
+['c','Louça ou cerâmica quebrada','Não é vidro reciclável. Embrulhe e descarte no lixo comum.','prato xicara'],
+['c','Cápsula de café','Alguns fabricantes têm pontos de coleta próprios. Consulte o fabricante.'],
+['p','Jornal','Papel (azul). Mantenha seco e limpo.','revista'],
+['p','Papelão','Papel (azul). Desmonte, achate e mantenha seco e sem gordura.','caixa'],
+['p','Caderno ou livro velho','Papel (azul). Retire capas plásticas e espirais, se possível. Livros em bom estado: doe.'],
+['p','Papel higiênico ou guardanapo usado','Lixo comum ou orgânico. Não é reciclável.'],
+['p','Papel de presente brilhante','Com brilho, glitter ou metalizado: lixo comum. Papel liso sem plástico: azul.','embrulho'],
+['p','Cupom fiscal','Papel térmico não é reciclável: lixo comum.','nota recibo'],
+['pl','Garrafa PET','Plástico (vermelho). Esvazie, enxágue rápido e destine à coleta seletiva.','refrigerante'],
+['pl','Sacola plástica','Plástico (vermelho). Limpa e seca; junte várias em uma só. Prefira ecobag.'],
+['pl','Embalagem de shampoo ou limpeza','Plástico (vermelho). Esvazie e enxágue; mantenha a tampa.','detergente'],
+['pl','Tampinha','Pode ir junto com a garrafa. Há também campanhas que recolhem tampinhas.'],
+['pl','Isopor','Depende da região: muitos locais aceitam só se limpo. Consulte a coleta seletiva local.'],
+['pl','Brinquedo quebrado','Plástico duro: depende da triagem local. Em bom estado, doe; senão ecoponto ou lixo comum.'],
+['v','Garrafa ou pote de vidro','Vidro (verde). Lave, retire tampas de metal e destine à coleta seletiva.','conserva'],
+['v','Vidro quebrado','Embrulhe em jornal e identifique para proteger os coletores. Confirme se a coleta local aceita.'],
+['v','Espelho','Não vai com o vidro comum. Embrulhe e consulte a prefeitura ou o ecoponto.'],
+['v','Vidro de janela ou box','Ecoponto ou entulho. Embrulhe os cacos. Não vai na coleta comum de vidro.'],
+['v','Lâmpada incandescente','Lixo comum, embrulhada. Não é reciclável junto com o vidro.'],
+['m','Lata de alumínio','Metal (amarelo). Esvazie e destine à coleta seletiva. O alumínio recicla repetidas vezes.','latinha refrigerante cerveja'],
+['m','Lata de conserva','Metal (amarelo). Lave e amasse, se possível.','aco'],
+['m','Lata de tinta ou spray','Com resíduo é perigosa: leve ao ecoponto. Vazia e seca, alguns locais aceitam como metal.','aerossol'],
+['h','Sofá ou móvel velho','Ecoponto ou coleta de volumosos da prefeitura. Se estiver bom, doe.','guarda-roupa mesa cadeira'],
+['h','Colchão','Ecoponto ou coleta de volumosos da prefeitura. Em bom estado, doe.'],
+['h','Entulho','Ecoponto ou caçamba licenciada. Não descarte em terrenos baldios.','obra reforma'],
+['h','Roupa','Doe para brechós, ONGs ou campanhas. Inutilizável: vire pano de limpeza.'],
+['h','Sapato','Doe se estiver utilizável. Inutilizável: ecoponto ou lixo comum.','tenis'],
+['h','Resto de poda','Ecoponto ou coleta de podas da prefeitura. Também pode virar compostagem.','galho folha jardim'],
+['h','Tinta de parede','Nunca no ralo ou na terra. Leve as sobras ao ecoponto ou à loja de tintas, se houver coleta.'],
+['s','Medicamento vencido','Leve a farmácias ou postos de saúde que recebem. Nunca no lixo comum ou vaso sanitário.','remedio'],
+['s','Seringa ou agulha','Perfurocortante: guarde em recipiente rígido bem fechado e leve a uma unidade de saúde.'],
+['s','Termômetro de mercúrio','Contém mercúrio. Não quebre nem jogue no lixo comum: procure ecoponto ou unidade de saúde.'],
+['s','Fralda ou absorvente','Lixo comum, bem embrulhado. Não é reciclável.'],
+['s','Máscara descartável','Lixo comum, ensacada. Corte os elásticos antes.'],
+['o','Pneu','Devolva a borracharias, revendedores ou ecopontos (logística reversa). Nunca queime nem abandone.'],
+['o','Óleo de motor','Perigoso: troque em oficina que destina corretamente ou leve a ponto de coleta. Nunca no solo ou ralo.','lubrificante']];
+const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const q=$('#q'),sug=$('#sug'),res=$('#res');let act=-1,list=[];
+const POP=['Pilha','Óleo de cozinha','Celular','Lâmpada fluorescente','Medicamento vencido','Caixa de pizza','Garrafa PET','Sofá ou móvel velho'];
+function show(it){res.replaceChildren();const t=document.createElement('b'),p=document.createElement('div');t.textContent=it[1]+' · '+C[it[0]];p.textContent=it[2];res.append(t,p);q.value=it[1];closeS()}
+function openS(l){list=l;act=-1;sug.replaceChildren();l.forEach((it,i)=>{const li=document.createElement('li');li.setAttribute('role','option');li.id='o'+i;li.textContent=it[1];li.onmousedown=e=>{e.preventDefault();show(it)};sug.append(li)});sug.hidden=!l.length;q.setAttribute('aria-expanded',String(!!l.length))}
+function closeS(){sug.hidden=true;q.setAttribute('aria-expanded','false');act=-1}
+function find(v){const n=norm(v.trim());return n?D.filter(d=>norm(d[1]).includes(n)||norm(d[3]).includes(n)).slice(0,8):POP.map(p=>D.find(d=>d[1]===p))}
+q.oninput=()=>{const l=find(q.value);openS(l);if(!l.length)res.textContent='Não encontrei esse item. Abra a lista completa abaixo ou consulte a prefeitura/ecoponto da sua cidade.'};
+q.onfocus=()=>openS(find(q.value));q.onblur=closeS;
+q.onkeydown=e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(sug.hidden)openS(find(q.value));if(!list.length)return;act=(act+(e.key==='ArrowDown'?1:-1)+list.length)%list.length;[...sug.children].forEach((li,i)=>li.classList.toggle('on',i===act));q.setAttribute('aria-activedescendant','o'+act)}else if(e.key==='Enter'&&list.length&&!sug.hidden){e.preventDefault();show(list[act<0?0:act])}else if(e.key==='Escape')closeS()};
+$('#cnt').textContent=D.length;
+const cats=$('#cats');
+Object.keys(C).forEach(k=>{const h=document.createElement('h4');h.textContent=C[k];const w=document.createElement('div');w.className='chips';D.filter(d=>d[0]===k).forEach(it=>{const b=document.createElement('button');b.className='chip';b.textContent=it[1];b.onclick=()=>{show(it);res.scrollIntoView({block:'center',behavior:'smooth'})};w.append(b)});cats.append(h,w)});
+// quiz
+const Q=[['Qual cor da coleta seletiva representa o vidro?',['Azul','Verde','Amarelo'],1],['Onde descartar pilhas?',['Lixo comum','Pontos de coleta específicos','Vaso sanitário'],1],['Qual metal pode ser reciclado diversas vezes sem perder qualidade?',['Alumínio','Nenhum','Apenas o ferro'],0],['O que NÃO deve ser descartado na pia?',['Água','Óleo de cozinha usado','Sabão'],1],['Qual a ordem de prioridade dos 3Rs?',['Reciclar, reduzir, reutilizar','Reduzir, reutilizar, reciclar','Reutilizar, reciclar, reduzir'],1]];
+let qi=0,sc=0;
+function rq(){const b=$('#quizBox');if(qi>=Q.length){b.innerHTML=`<h3>Resultado: ${sc}/${Q.length}</h3><p>${sc>=4?'Excelente domínio do tema!':'Revise a seção de coleta seletiva e tente de novo.'}</p>`;const r=document.createElement('button');r.className='chip';r.textContent='Refazer';r.onclick=()=>{qi=0;sc=0;rq()};b.append(r);return}
+const[t,o,c]=Q[qi];b.innerHTML=`<p><b>Pergunta ${qi+1} de ${Q.length}</b></p><p>${t}</p>`;
+o.forEach((x,i)=>{const e=document.createElement('button');e.className='opt';e.textContent=x;e.onclick=()=>{b.querySelectorAll('.opt').forEach((y,j)=>{y.disabled=true;if(j===c)y.classList.add('right')});if(i===c)sc++;else e.classList.add('wrong');const n=document.createElement('button');n.className='chip';n.textContent='Próxima';n.onclick=()=>{qi++;rq()};b.append(n);n.focus()};b.append(e)})}
+rq();
+// compromisso
+const cks=[...document.querySelectorAll('.pl input')];
+function up(){const n=cks.filter(c=>c.checked).length;$('#pbar').style.width=(n/cks.length*100)+'%';$('#ptxt').textContent=n===cks.length?'🎉 Parabéns! Você assumiu todos os compromissos.':`${n} de ${cks.length} compromissos`;try{localStorage.setItem('pledge',JSON.stringify(cks.map(c=>c.checked)))}catch(e){}}
+try{const s=JSON.parse(localStorage.getItem('pledge')||'[]');cks.forEach((c,i)=>c.checked=!!s[i])}catch(e){}
+cks.forEach(c=>c.onchange=up);up();
+</script>
+</body>
+</html>
